@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+{% block header %}
+{% include 'main/navbar.html' %}
+{% endblock header %}
+
+
+{% block maincontent %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-4 border rounded mt-2 bg-dark bg-gradient text-white py-3 ">
+            <h1 class="display-4"><i class="fa fa-2xs fa-medkit text-danger" aria-hidden="true"></i> Medicine</h1>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                {{addmed|crispy}}
+            
+                <button type="submit" class="btn btn-success">add</button>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
+  
+{% endblock maincontent %}

@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% block header %}
+{% include 'main/navbar.html' %}
+{% endblock header %}
+
+
+{% block maincontent %}
+
+<div class="container">
+
+    <table class="table table-bordered">
+        <thead class="table-danger">
+            <tr>
+                <th>Medicine name</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Medicine Description</th>
+                <th>Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-dark">
+{% if medicine_data%}
+{% for medlist in medicine_data  %}    
+
+            <tr>
+                <td>{{medlist.medicine_name}}</td>
+                <td>{{medlist.company}}</td>
+                <td>{{medlist.price}}</td>
+                <td>{{medlist.medicine_description}}</td>
+                <td>{{medlist.medicine_add_date}}</td>
+                <td><a href="{% url 'editmedicine' uid=medlist.id %}" class="btn btn-warning"><i class="fa fa-pen-to-square"></i> Edit</a></td>
+                <td><a href="{% url 'deletemedicine' uid=medlist.id %}"" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i> Delete</a></td>
+
+
+            </tr>
+            {% endfor %}
+            {% else %}
+                <td>Nothing Found</td>
+            {% endif %}
+
+
+        </tbody>
+    </table>
+
+
+
+</div>
+
+  
+{% endblock maincontent %}
